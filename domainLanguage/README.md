@@ -6,6 +6,8 @@ This script takes a set of  "Mnemonics" and generates a python code  which draws
 
 > The idea is originally taken from the book "The pragmatic programmer", chapter 2 , topic 12, page 63.
 
+![assets/example.gif](assets/example.gif)
+
 ### Requirements
 
 - Python 3.6 or higher 
