@@ -86,11 +86,7 @@ The file "lib/rules.pl"  is used to read the allowed mnemonics, if you want to e
 );
 ```
 
-The Map above dictates the rules for the allowed mnemonics, and its regex rules. If you need to add a new mnemonic, just add a new item with the regex to detect the value from the map file. 
-
-
-
-For example if we want to allow a new mnemonic called "Turtle" of just one digit (from 0 to 9) we should add the item *TURTLE => "[0-9]"*.
+The Map above dictates the rules for the allowed mnemonics, and its regex rules. If you need to add a new mnemonic, just add a new item with the regex to detect the value from the map file. For example if we want to allow a new mnemonic called "Turtle" of just one digit (from 0 to 9) we should add the item *TURTLE => "[0-9]"*.
 
 ```perl
 %commands = (
@@ -98,6 +94,7 @@ For example if we want to allow a new mnemonic called "Turtle" of just one digit
   TURTLE => "[0-9]"
 );
 ```
+
 
 
 **Subroutines**
