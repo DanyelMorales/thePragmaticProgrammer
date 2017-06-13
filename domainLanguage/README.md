@@ -55,11 +55,72 @@ U   # pen up
 **Notes:** 
 
 * Comments are optional.
-* 1 the scale of pixel drawing is : 1 * 100 
+* the scale of pixel drawing is : 1 * 100 
+
+
+## **Extending:**
+
+The file "lib/rules.py"  is used to read the allowed mnemonics, if you want to extend the script you have to do 2 things:
+
+- Add a new key/value item for command/rule in the hash rule
+- Add a new subroutine to handle the value from map file.
 
 
 
-**Contact me:**
+**Hash Rule**
+
+```perl
+%commands = (
+	P => "[0-9]+",
+	D => "",
+	COLOR => " *([a-zA-Z])* +([a-zA-Z])*",
+	W => "[0-9]+",
+	N => "[0-9]+",
+	E => "[0-9]+", 
+	S => "[0-9]+",
+	U => "",
+	TURTLE => "[0-9]"
+);
+
+```
+
+The hashmap above dictates the rules for the allowed mnemonics, and its regex rules. If you need to add a new mnemonic, just add a new item with the regex to detect the value from the map file. For example if we want to allow a new mnemonic called "Turtle" of just one digit (from 0 to 9) we shall add the item *TURTLE => "[0-9]"*.
+
+
+
+**Subroutines**
+
+The next step is to create a subroutine called "do_TURTLE"
+
+```perl
+sub do_TURTLE{
+	my ($value, $rule) = @_;
+	my @capture = @_;
+	$code = "print(\"I AM A turtle of size $value\");";
+	addPythoner($code);
+	return 1;
+};
+```
+
+The code above will read the $value var which handles something taken from the map file applying the rege x rule from the "hash rule".  The function "addPythoner" will push to the stack the python code that represents  our parsed mnemonic.
+
+
+
+Things you must to know:
+
+- $value :  Value taken from map file with following the regex rule in "hash rule container"
+- $rule : the regex used to find the value
+- @capture: the array returned by the parser.
+- Return 1 if the translation was successful otherwise return 0
+- Some times the $value is not what we expect, so we can process it a little bit more like in COLOR subroutine.
+
+
+
+And that's it, hope you enjoy using and learning what I've done.
+
+
+
+## Contact me:
 
 If you have questions or you want to improve the code make a pull request or say hi to danyelmorales1991@gmail.com
 
