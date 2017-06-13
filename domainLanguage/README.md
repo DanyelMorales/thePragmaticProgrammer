@@ -69,7 +69,9 @@ The file "lib/rules.pl"  is used to read the allowed mnemonics, if you want to e
 
 
 
-**Symbol Map **
+
+
+**Symbol Map**
 
 ```perl
 %commands = (
