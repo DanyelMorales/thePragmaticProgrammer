@@ -60,7 +60,7 @@ U   # pen up
 
 ## **Extending:**
 
-The file "lib/rules.py"  is used to read the allowed mnemonics, if you want to extend the script you have to do 2 things:
+The file "lib/rules.pl"  is used to read the allowed mnemonics, if you want to extend the script you have to do 2 things:
 
 - Add a new key/value item for command/rule in the hash rule
 - Add a new subroutine to handle the value from map file.
