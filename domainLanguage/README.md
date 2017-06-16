@@ -6,6 +6,8 @@ This script takes a set of  "Mnemonics" and generates a python code  which draws
 
 > The idea is originally taken from the book "The pragmatic programmer", chapter 2 , topic 12, page 63.
 
+
+
 ![assets/example.gif](assets/example.gif)
 
 ### Requirements
@@ -60,14 +62,16 @@ U   # pen up
 
 ## **Extending:**
 
-The file "lib/rules.pl"  is used to read the allowed mnemonics, if you want to extend the script you have to do 2 things:
+The file "lib/rules.pl"  is used to read the allowed mnemonics, if you want to extend the script you have to:
 
-- Add a new key/value item for command/rule in the hash rule
-- Add a new subroutine to handle the value from map file.
+- Add a new key/value item for command/rule in the Symbol Map
+- Add a new subroutine to handle the value detected from the map file that contains the mnemonics.
 
 
 
-**Hash Rule**
+
+
+**Symbol Map**
 
 ```perl
 %commands = (
@@ -78,13 +82,18 @@ The file "lib/rules.pl"  is used to read the allowed mnemonics, if you want to e
 	N => "[0-9]+",
 	E => "[0-9]+", 
 	S => "[0-9]+",
-	U => "",
-	TURTLE => "[0-9]"
+	U => ""
 );
-
 ```
 
-The hashmap above dictates the rules for the allowed mnemonics, and its regex rules. If you need to add a new mnemonic, just add a new item with the regex to detect the value from the map file. For example if we want to allow a new mnemonic called "Turtle" of just one digit (from 0 to 9) we shall add the item *TURTLE => "[0-9]"*.
+The Map above dictates the rules for the allowed mnemonics, and its regex rules. If you need to add a new mnemonic, just add a new item with the regex to detect the value from the map file. For example if we want to allow a new mnemonic called "Turtle" of just one digit (from 0 to 9) we should add the item *TURTLE => "[0-9]"*.
+
+```perl
+%commands = (
+  ...,
+  TURTLE => "[0-9]"
+);
+```
 
 
 
@@ -102,17 +111,17 @@ sub do_TURTLE{
 };
 ```
 
-The code above will read the $value var which handles something taken from the map file applying the rege x rule from the "hash rule".  The function "addPythoner" will push to the stack the python code that represents  our parsed mnemonic.
+The code above will read the $value var which handles anything extracted from the map file following the "Symbol Map" regex.  The function "addPythoner" will push to the stack the python code that represents  our parsed mnemonic.
 
 
 
 Things you must to know:
 
-- $value :  Value taken from map file with following the regex rule in "hash rule container"
+- $value :  Value taken from "map file" applying the Symbol Map regex for the mnemonic
 - $rule : the regex used to find the value
 - @capture: the array returned by the parser.
-- Return 1 if the translation was successful otherwise return 0
-- Some times the $value is not what we expect, so we can process it a little bit more like in COLOR subroutine.
+- Plz Return 1 if the translation was successful otherwise return 0 for future features that supports error handling
+- Sometimes the $value is not what we expect, so we can process it a little bit more like in COLOR subroutine.
 
 
 
