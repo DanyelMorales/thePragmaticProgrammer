@@ -2,13 +2,13 @@
 
 # Prepends USE STRICT;
 
-The current perl script read the files from a directory and verify each file to contain the "use strict;" package otherwise the *"use strict"* statement is prepended always after the first comment block of the file (if exists any).
+The current perl script reads multiple files from a directory and then verify each file to contain the "use strict;" statement otherwise is prepended after the first comment block of the file (if exists any). If the statement is already declared, perl will skip the file.
 
 ![assets/example.gif](assets/example.gif)
 
 #### usage:
 
-the argumento 0 should contain a glob regex pattern which is used to read the files to verify.
+the argumento 0 should contains a glob regex pattern which is used to read the files.
 
 ```
 perl main.pl "./path/to/directory/*"
