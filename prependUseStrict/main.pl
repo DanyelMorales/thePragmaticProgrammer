@@ -35,7 +35,7 @@ sub verifyStrict{
 	 my $line = shift(@_);
 	 my $hasStrict = shift(@_);
 	 my $tmpFile  = shift(@_);
-	 
+
 	  if(isStrict($line) && $hasStrict){
 			return 1;
 	  }
@@ -66,10 +66,10 @@ sub readFile{
 
 sub readFiles{
 	 my $path = shift(@_);
-	 my @files = < $path >; 
+	 my @files = < $path >;
 	 foreach my $file_ (@files) {
 		readFile($file_);
-	 } 
+	 }
 };
 
 readFiles($ARGV[0]);
