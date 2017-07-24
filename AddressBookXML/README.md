@@ -56,11 +56,11 @@ To extend with new operations, add a new item at "allowed" index Then create a n
 ```php
     "allowed" => ["insert","read", "myop"]
 ```
-![](assets/Captura.png)
+![](assets/Captura.PNG)
 
 Now define a new function like the following inside your new php file:
 
-![](assets/interface.png)
+![](assets/interface.PNG)
 
 
 
