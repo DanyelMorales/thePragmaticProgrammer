@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table>
+  <thead>
+    <td>Name</td>
+    <td>LastName</td>
+<td>Phone</td></thead>
+  <tbody>
+    <tr>
+      <td>Jhon</td>
+      <td>Doe</td>
+    </tr>
+  <tr><td>Foo</td><td>Bar</td><td>99458999</td></tr></tbody>
+</table>
