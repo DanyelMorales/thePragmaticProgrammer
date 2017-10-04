@@ -40,7 +40,7 @@ Takes a file with mnemonics  and turns its content into any programming language
 | Defining an array f any type with name   | F name type[n]       |
 | End of entity(structure, class, record,...) | E End of entity      |
 
-> **Note**: type is relative to the language that will be converted to. If you need to define your own set of types, then see the extending section.
+> **Note**: the type is relative to the language that will be converted to. If you need to define your own set of types, then see the extending section.
 
 
 
@@ -52,7 +52,7 @@ Takes a file with mnemonics  and turns its content into any programming language
 
 
 2. Implement each required procedure inside AbstractLang class.
-3.  Save your code generator as a pascal module in App::CodeGenerator::Generators::YOUR_GENERATOR_NAME;
+3. Save your code generator as a pascal module in App::CodeGenerator::Generators::YOUR_GENERATOR_NAME;
 4. You can get more help reading the pascal code generator in *App::CodeGenerator::Generators::Pascal*
 5. To save a generated line, just push to:
 
@@ -89,7 +89,7 @@ sub doYourNewToken{
 
 ### TODO
 
-* Erro Handling
+* Error Handling
 * Improve this documentation
 * add new mnemonics
 * load dinamically what generator will be used
