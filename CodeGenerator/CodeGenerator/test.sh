@@ -1,0 +1,1 @@
+prove -v  -Ilib t/App/$1
