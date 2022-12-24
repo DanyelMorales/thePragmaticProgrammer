@@ -2,17 +2,15 @@
 
 ![example](assets/example.gif)
 
-
-
 ### Requirements
 
 * perl 5.6 or greater
 
 ### Description
 
-Takes a file with mnemonics  and turns its content into any programming language(if is supported as a generator).  
+Takes a file with mnemonics  and turns its content into any programming language(if supported).  
 
-> **Note**: Each mnemonic file should has a *.map* extension
+> **Note**: Every file should have a *.map* extension
 
 ### Supported features
 
@@ -40,27 +38,21 @@ Takes a file with mnemonics  and turns its content into any programming language
 | Defining an array f any type with name   | F name type[n]       |
 | End of entity(structure, class, record,...) | E End of entity      |
 
-> **Note**: the type is relative to the language that will be converted to. If you need to define your own set of types, then see the extending section.
-
-
+> **Note**: the type is relative to the language that will be converted to. See the extending section if you need to define your own types.
 
 ### Extending
 
 #### Adding new generators
 
-1. Extend from App::CodeGenerator::Interfaces::AbstractLang;
-
-
-2. Implement each required procedure inside AbstractLang class.
-3. Save your code generator as a pascal module in App::CodeGenerator::Generators::YOUR_GENERATOR_NAME;
+1. Extends from App::CodeGenerator::Interfaces::AbstractLang;
+2. Implements each required procedure inside AbstractLang class.
+3. Saves your code generator as a pascal module in App::CodeGenerator::Generators::YOUR_GENERATOR_NAME;
 4. You can get more help reading the pascal code generator in *App::CodeGenerator::Generators::Pascal*
 5. To save a generated line, just push to:
 
 ```
 	push @{$self->{lines}}, "your translation" ;
 ```
-
- 
 
 #### Supporting new mnemonics
 
@@ -76,7 +68,7 @@ In  App::CodeGenerator::Map.pm file you can find the following bounch of lines s
 }
 ```
 
-Add a new regex with a unique key to identify the token group. Then just go to App::CodeGenerator::Interfaces::AbstractLang file  and inside "update" subroutine add a conditional to call the method handler for your new token key, to finish add a mandatory subroutine just like the following:
+Add a new regex with a unique key to identify the token group and go to App::CodeGenerator::Interfaces::AbstractLang file. Inside "update" subroutine add a conditional to call the method handler for your new token key, to finish add a mandatory subroutine just like the following:
 
 ```
 sub doYourNewToken{
